@@ -1,0 +1,47 @@
+function validSolution(board){
+    let valid = true
+    for (let i = 0; i <9 ; i++) {
+        let arr = []
+        arr = [...board[i]].sort()
+        for (let j = 0; j < 9; j++) {
+            if (arr[j]!=j+1){
+                valid=false;
+            }
+        }
+    }
+
+    for (let i = 0; i < 9 ; i++) {
+        let arr=[]
+        for (let j = 0; j < 9 ; j++) {
+            arr.push(board[j][i])
+        }
+        arr.sort()
+        for (let j = 0; j < 9; j++) {
+            if (arr[j]!=j+1){
+                valid=false;
+            }
+
+        }
+    }
+    const arr2 = [[0,0],[0,3],[0,6],[3,0],[3,3],[3,6],[6,0],[6,3],[6,6]]
+    arr2.forEach(tab=>{
+        let arr = []
+        for (let i = tab[0]; i < tab[0]+3 ; i++) {
+            for (let j = tab[1]; j < tab[1]+3 ; j++) {
+                arr.push(board[i][j])
+            }
+        }
+        arr.sort()
+        for (let j = 0; j < 9; j++) {
+            if (arr[j]!=j+1){
+                valid=false;
+            }
+
+        }
+
+    })
+
+
+
+    return valid;
+}
